@@ -1,0 +1,54 @@
+.container{
+  display:flex;
+  padding:0px
+}
+@media (min-width: 576px) {
+  .container {
+    min-width: 1300px
+  }
+}
+.sidebar{
+  height: 700px
+}
+.form{
+  margin:20px 40px
+}
+.post{
+  display: flex;
+  flex-wrap: wrap;
+  margin:20px 50px
+  
+}
+.foot{
+  margin: 20px 300px;
+}
+.but{
+  position: relative;
+    left: 200px;
+   
+  
+}
+.bt{
+  position: relative;
+  left: 9px;
+  bottom: -24px;
+  z-index: 5;
+  color: brown;
+}
+.ip{
+  margin-top: 20px;
+    padding: 20px;
+    width: 313px;
+    border: 5px solid black;
+    font-size: 30px;
+}
+.box{
+  margin-top: 100px;
+}
+.bt{
+  margin-top: 20px;
+}
+.bat{
+  margin-top: 20px;
+    margin-left: 20px;
+}
