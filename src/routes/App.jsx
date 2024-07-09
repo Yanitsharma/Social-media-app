@@ -15,8 +15,7 @@ function App() {
   <SideBar ></SideBar>
   <div className="content">
    <Header></Header>
-     {/* <Outlet/> */}
-     <PostList/>
+     <Outlet/>
    <Footer></Footer>
    </div>
    </div>
