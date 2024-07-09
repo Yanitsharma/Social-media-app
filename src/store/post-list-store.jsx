@@ -11,7 +11,7 @@ export const PostList = createContext({
 let data={};
 const delete1 = async (pd)=>{
     try{
-let response=await axios.delete(`http://localhost:3000/api/${pd}`);  
+let response=await axios.delete(`http://localhost:2000/api/${pd}`);  
    console.log(response.data);
     }
     catch(error){
@@ -21,7 +21,7 @@ let response=await axios.delete(`http://localhost:3000/api/${pd}`);
 
 const like= async (data,id)=>{
  try{
-    let response=await axios.put(`http://localhost:3000/api/${id}`,data);
+    let response=await axios.put(`http://localhost:2000/api/${id}`,data);
     console.log(response.data);
  }
  catch(error){
@@ -111,7 +111,7 @@ let DEFAULT_POST_LIST=[];
 
 
   
-  let response= await axios.get('http://localhost:3000/api/post');
+  let response= await axios.get('http://localhost:2000/api/post');
   DEFAULT_POST_LIST=response.data
   // console.log(DEFAULT_POST_LIST);
   

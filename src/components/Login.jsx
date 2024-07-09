@@ -17,7 +17,7 @@ const Login=()=>{
       password:password,
     }
     try{
-    const response= await axios.post("http://localhost:3000/api/login", data)
+    const response= await axios.post("http://localhost:2000/api/login", data)
     console.log(response);
         console.log(response.status);
         navigate("/app");

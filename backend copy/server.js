@@ -110,6 +110,6 @@ app.delete('/api/:id',async(req,res)=>{
 })
 
 
-app.listen(3000,()=>{
-  console.log(`server is running on 3000`);
+app.listen(2000,()=>{
+  console.log(`server is running on 2000`);
 })
