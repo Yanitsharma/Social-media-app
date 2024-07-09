@@ -7,33 +7,34 @@ import PostList from "./components/PostList.jsx";
 import Signup from "./components/Signup.jsx";
 import Login from "./components/Login.jsx";
 
-const router = createBrowserRouter([
-  {
-    path: "/app",
-    element: <App />,
-    children: [
-      { path: "/app", element: <PostList /> },
-      {
-        path: "/app/create-post",
-        element: <CreatePost />,
+// const router = createBrowserRouter([
+//   {
+//     path: "/app",
+//     element: <App />,
+//     children: [
+//       { path: "/app", element: <PostList /> },
+//       {
+//         path: "/app/create-post",
+//         element: <CreatePost />,
         
-      },
+//       },
       
-    ],
-  },
-  {
-    path:"/login",
-    element:<Login/>
-  },
-  {
-    path:"/",
-    element:<Signup/>
-  },
+//     ],
+//   },
+//   {
+//     path:"/login",
+//     element:<Login/>
+//   },
+//   {
+//     path:"/",
+//     element:<Signup/>
+//   },
 
-]);
+// ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    {/* <RouterProvider router={router} /> */}
+    <App/>
   </React.StrictMode>
 );
