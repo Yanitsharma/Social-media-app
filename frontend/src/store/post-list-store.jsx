@@ -1,4 +1,5 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, useState } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 export const PostList = createContext({
   postList: [],
@@ -64,10 +65,24 @@ const postListReducer =  (currPostList, action) => {
 };
 
 const PostListProvider = ({ children }) => {
+  // const [value,setvalue]=useState([
+  // ]);
   const [postList, dispatchPostList] = useReducer(
     postListReducer,
     DEFAULT_POST_LIST
   );
+  // let count=1;
+
+  // useEffect(()=>{
+  //   axios.get("https://social-media-app-4-bm12.onrender.com/api/post").then((res)=>{
+  //     if(count){
+  //       setvalue(res.data);
+  //     console.log(res.data);
+  //     count=0;
+  //     }
+  //   }
+  // )},[])
+  
 
   const addPost = ( id,postTitle, postBody,reactions, tags,img) => {
     dispatchPostList({
@@ -107,12 +122,14 @@ const PostListProvider = ({ children }) => {
     </PostList.Provider>
   );
 };
+
 let DEFAULT_POST_LIST=[];
-
-
-  
   let response= await axios.get('https://social-media-app-4-bm12.onrender.com/api/post');
   DEFAULT_POST_LIST=response.data
+
+  
+  
+  
   // console.log(DEFAULT_POST_LIST);
   
   
