@@ -52,7 +52,7 @@ app.get('/api/Home',async (req,res)=>{
     res.status(500).json({err:'internal server error'});
   }
 })
-app.post('/api/post',async (req,res)=>{
+app.post('/api',async (req,res)=>{
   try{
     const newPost=new Post(req.body);
     const response=await newPost.save();

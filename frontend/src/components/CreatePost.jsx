@@ -32,7 +32,7 @@ const CreatePost = () => {
       img:img,
     }
     try{
-    let response=await axios.post('http://localhost:2000/api/post',data);
+    let response=await axios.post('https://social-media-app-3-3yx4.onrender.com/api/post1',data);
     console.log(response.data);
     addPost( response.data._id,response.data.title, response.data.body,response.data.reactions, response.data.tags,response.data.img);
      navigate("/app");
