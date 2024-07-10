@@ -11,7 +11,7 @@ export const PostList = createContext({
 let data={};
 const delete1 = async (pd)=>{
     try{
-let response=await axios.delete(`https://social-media-app-3-3yx4.onrender.com/api/${pd}`);  
+let response=await axios.delete(`https://social-media-app-4-bm12.onrender.com/api/${pd}`);  
    console.log(response.data);
     }
     catch(error){
@@ -21,7 +21,7 @@ let response=await axios.delete(`https://social-media-app-3-3yx4.onrender.com/ap
 
 const like= async (data,id)=>{
  try{
-    let response=await axios.put(`https://social-media-app-3-3yx4.onrender.com/api/${id}`,data);
+    let response=await axios.put(`https://social-media-app-4-bm12.onrender.com/api/${id}`,data);
     console.log(response.data);
  }
  catch(error){
@@ -111,7 +111,7 @@ let DEFAULT_POST_LIST=[];
 
 
   
-  let response= await axios.get('http://localhost:2000/api/post');
+  let response= await axios.get('https://social-media-app-4-bm12.onrender.com/api/post');
   DEFAULT_POST_LIST=response.data
   // console.log(DEFAULT_POST_LIST);
   
