@@ -1,4 +1,4 @@
-import YanitSharma from '../images/IIT BHU.jpg'
+// import YanitSharma from '../images/IIT BHU.jpg'
 // import IITBHU from './IIT BHU.jpg'
 
 import { useContext } from "react";
@@ -10,7 +10,7 @@ const Post=({post})=>{
  const navigate=useNavigate()
   return <>
   <div className="card" style={{width: "18rem",margin:"15px"}}>
-  <img src={YanitSharma} className="card-img-top" alt="Post"/>
+  <img src={post.img} className="card-img-top" alt="Post"/>
   <button type="button" className="btn-close bt" onClick={()=>deletePost(post._id)} aria-label="Close"></button>
   <div className="card-body">
   <button type="button" className="btn btn-primary position-relative but" onClick={()=>{reactionIncr(post._id)
