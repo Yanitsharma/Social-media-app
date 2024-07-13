@@ -3,9 +3,6 @@ import './App.css'
 import Header from '../components/Header';
 import SideBar from '../components/SiderBar';
 import Footer from '../components/Footer';
-import { useState } from 'react';
-import PostList from '../components/PostList';
-import CreatePost from '../components/CreatePost';
 import PostProvider from '../store/post-list-store';
 import { Outlet } from 'react-router-dom';
 function App() {

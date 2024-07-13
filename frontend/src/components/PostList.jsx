@@ -7,6 +7,7 @@ const PostList = () => {
   return (
     <>
     <div className="post">
+      
       {postList.map((post) => (
         <Post key={post._id} post={post} />
       ))}

@@ -6,6 +6,7 @@ export const PostList = createContext({
   addPost: () => {},
   deletePost: () => {},
   reactionIncr:()=>{},
+  subPost:()=>{},
 });
 
 
@@ -24,6 +25,7 @@ const like= async (data,id)=>{
  try{
     let response=await axios.put(`https://social-media-app-4-bm12.onrender.com/api/${id}`,data);
     console.log(response.data);
+
  }
  catch(error){
 console.log(error);
@@ -43,47 +45,57 @@ const postListReducer =  (currPostList, action) => {
       
          
     )
-  } else if (action.type === "ADD_POST") {
+  } 
+
+  else if(action.type==="React-Post"){
+    currPostList.map((post)=>{
+   if(post._id===action.payload.postId){
+     post.reactions=eval(post.reactions)+(1)
+      data={reactions:post.reactions};
+       
+     like(data,post._id);
+   }
+ 
+   
+ })
+ newPostList=currPostList;
+ action.type="";
+}
+  else if (action.type === "ADD_POST") {
     newPostList = [action.payload, ...currPostList];
   }
- else if(action.type==="React-Post"){
-     currPostList.map((post)=>{
-    if(post._id===action.payload.postId){
-      post.reactions=eval(post.reactions)+(1)
-       data={reactions:post.reactions};
-        
-      like(data,post._id);
-    }
+  else if(action.type==="initial"){
+    newPostList=action.payload;
+  }
   
-    
-  })
-  newPostList=currPostList;
-  action.type="";
- }
   
   return newPostList;
 };
 
-const PostListProvider = ({ children }) => {
-  // const [value,setvalue]=useState([
-  // ]);
+const PostListProvider = ({ children }) => { 
+  let  DEFAULT_POST_LIST=[];
+  useEffect(()=>{
+    axios.get("https://social-media-app-4-bm12.onrender.com/api/post").then((res)=>{
+      console.log(res.data);
+     DEFAULT_POST_LIST=(res.data);
+     subPost(DEFAULT_POST_LIST); 
+    }
+
+  )},[])
+
   const [postList, dispatchPostList] = useReducer(
     postListReducer,
     DEFAULT_POST_LIST
   );
-  // let count=1;
-
-  // useEffect(()=>{
-  //   axios.get("https://social-media-app-4-bm12.onrender.com/api/post").then((res)=>{
-  //     if(count){
-  //       setvalue(res.data);
-  //     console.log(res.data);
-  //     count=0;
-  //     }
-  //   }
-  // )},[])
   
-
+  // let count=1;
+  
+ const subPost=(DEFAULT_POST_LIST)=>{
+  dispatchPostList({
+    type:"initial",
+    payload:DEFAULT_POST_LIST, 
+  })
+ }
   const addPost = ( id,postTitle, postBody,reactions, tags,img) => {
     dispatchPostList({
       type: "ADD_POST",
@@ -117,18 +129,15 @@ const PostListProvider = ({ children }) => {
   }
 
   return (
-    <PostList.Provider value={{ postList, addPost, deletePost, reactionIncr }}>
+    <PostList.Provider value={{ postList, addPost, deletePost, reactionIncr,subPost}}>
       {children}
     </PostList.Provider>
   );
 };
-
-let DEFAULT_POST_LIST=[];
-  let response= await axios.get('https://social-media-app-4-bm12.onrender.com/api/post');
-  DEFAULT_POST_LIST=response.data
-
   
-  
+   
+
+ 
   
   // console.log(DEFAULT_POST_LIST);
   
